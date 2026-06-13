@@ -54,12 +54,12 @@ To shield users from knowing cryptographic hashes of Nix packages, a unification
 ```mermaid
 graph LR
     subgraph "GLIBC 2.42 Environment"
-        H[//:hello] --> LD1[ld-linux glibc-2.42]
-        P[//:patchelf] --> LD1
+        H["//:hello"] --> LD1[ld-linux glibc-2.42]
+        P["//:patchelf"] --> LD1
         LD1 --> GLIBC1[libc.so.6 glibc-2.42]
     end
     subgraph "GLIBC 2.35 Environment"
-        R[//:ripgrep] --> LD2[ld-linux glibc-2.35]
+        R["//:ripgrep"] --> LD2[ld-linux glibc-2.35]
         LD2 --> GLIBC2[libc.so.6 glibc-2.35]
         LD2 --> PCRE[libpcre2-8.so]
     end
