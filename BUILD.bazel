@@ -1,6 +1,7 @@
 exports_files(["nix_extractor"])
 
 load("//:nix_binary.bzl", "nix_binary")
+load("//:custom_rules.bzl", "nix_hello_gen", "nix_patchelf_inspect", "nix_ripgrep_search")
 
 # 1. GNU Hello Wrapper
 # Links and executes the precompiled hello package via explicit invocation
@@ -52,4 +53,23 @@ nix_binary(
         "@nix_store//:gcjzri64yz2clwwlkay0wbarjbwq8yvp", # Force mounting of libidn2-2.3.2
         "@nix_store//:3lbh75xpd3z1pcnxlrzfyaafgvziizw4", # Force mounting of libunistring-1.0
     ],
+)
+
+# 4. Custom rules exercising the Nix infrastructure in build actions
+nix_hello_gen(
+    name = "hello_gen_out",
+    out = "hello_message.txt",
+)
+
+nix_ripgrep_search(
+    name = "ripgrep_search_out",
+    src = "//:main.c",
+    pattern = "int main",
+    out = "rg_matches.txt",
+)
+
+nix_patchelf_inspect(
+    name = "patchelf_inspect_out",
+    binary_to_inspect = "@nix_pkg_18mrc8i5l3r5xnxrv091x25nsnwa1xzp//:bin/hello",
+    out = "hello_interpreter.txt",
 )

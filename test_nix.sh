@@ -51,4 +51,15 @@ echo "=== Running Ripgrep Nix Package ==="
 bazel run //:ripgrep -- --version
 bazel run //:ripgrep -- "main" /workspace/main.c
 
+echo "=== Building Custom Rule Targets ==="
+bazel build //:hello_gen_out //:ripgrep_search_out //:patchelf_inspect_out
+
+echo "=== Verifying Custom Rule Outputs ==="
+echo "hello_message.txt:"
+cat bazel-bin/hello_message.txt
+echo "rg_matches.txt:"
+cat bazel-bin/rg_matches.txt
+echo "hello_interpreter.txt:"
+cat bazel-bin/hello_interpreter.txt
+
 echo "=== Verification Completed Successfully! ==="
