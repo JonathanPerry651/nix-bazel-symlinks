@@ -70,6 +70,19 @@ graph LR
 - [nix_store.bzl](file:///Users/jonathanperry/.gemini/antigravity/scratch/nix-bazel-symlinks/nix_store.bzl): Combines packages into a single symlink forest.
 - [nix_binary.bzl](file:///Users/jonathanperry/.gemini/antigravity/scratch/nix-bazel-symlinks/nix_binary.bzl): Wrapper script rule to safely resolve paths and launch binaries via the correct `ld-linux`.
 - [nix_extractor.go](file:///Users/jonathanperry/.gemini/antigravity/scratch/nix-bazel-symlinks/nix_extractor.go): A standalone Go program that downloads NARs and outputs file structures and metadata.
+- [custom_rules.bzl](file:///Users/jonathanperry/.gemini/antigravity/scratch/nix-bazel-symlinks/custom_rules.bzl): Custom Starlark rules that invoke the Nix-built binaries as part of sandboxed build actions.
+
+---
+
+## Custom Build Rules
+
+To verify that the Nix binaries can be consumed as build tools by other Bazel rules, [custom_rules.bzl](file:///Users/jonathanperry/.gemini/antigravity/scratch/nix-bazel-symlinks/custom_rules.bzl) defines three custom rules:
+
+1. **`nix_hello_gen`**: Runs the `//:hello` binary to output a hello message.
+2. **`nix_ripgrep_search`**: Runs `//:ripgrep` to search a file for a regex pattern.
+3. **`nix_patchelf_inspect`**: Runs `//:patchelf` with `--print-interpreter` on an ELF binary to extract its dynamic linker path.
+
+These rules use `ctx.actions.run_shell` and execute the nix-packaged binaries inside Bazel's strict sandboxed build actions.
 
 ---
 
@@ -86,4 +99,4 @@ podman run --rm \
   bash /workspace/test_nix.sh
 ```
 
-The script will automatically install prerequisites, download Bazelisk, clean the workspace, build all targets, and execute the verified Nix binaries (`hello`, `patchelf`, `ripgrep`).
+The script will automatically install prerequisites, download Bazelisk, clean the workspace, build all targets (including the custom rules and their Nix dependencies), and execute/verify all output files.
