@@ -18,7 +18,7 @@ graph TD
 
     subgraph "Bzlmod Repositories"
         Extractor -->|Unpack| Repos[Individual Nix Package Repos]
-        Repos -->|JSON Metadata| Forest[@nix_store Symlink Forest]
+        Repos -->|JSON Metadata| Forest["@nix_store Symlink Forest"]
     end
 
     subgraph "Sandboxed Execution"
