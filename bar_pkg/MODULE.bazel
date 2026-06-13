@@ -1,0 +1,6 @@
+module(
+    name = "repo_bar",
+    version = "1.0.0",
+)
+
+bazel_dep(name = "rules_cc", version = "0.0.17")

@@ -1,0 +1,28 @@
+module(
+    name = "nix_bazel_links",
+    version = "1.0.0",
+)
+
+bazel_dep(name = "rules_cc", version = "0.0.17")
+
+# Load and use our Nix Bzlmod module extension
+nix_ext = use_extension("//:nix_extension.bzl", "nix_extension")
+
+# Import all external repositories into the main workspace scope
+use_repo(
+    nix_ext,
+    "nix_store",
+    "nix_pkg_18mrc8i5l3r5xnxrv091x25nsnwa1xzp",
+    "nix_pkg_4yp2n6439qwqa60hjyx4lx9550ckgvd9",
+    "nix_pkg_1bdzriipn18184zpwh2lfdabk2gqcgxn",
+    "nix_pkg_7a3zsvzzm9ki2r3w2cl0mx12zjicinkj",
+    "nix_pkg_l5ypyhyv1df633ldrdj8fyhnxaqqw6s7",
+    "nix_pkg_f04zlspmsqzyv15kcxbn6mx4wb71a0jm",
+    "nix_pkg_xag03kgklavhhq66qnac59pqxpxvjqga",
+    "nix_pkg_xzs7w65n77a94hmpwkfsnwqkj2k5akn4",
+    "nix_pkg_n2jwjpmx2dg4cznyni372pm9y4a90yhv",
+    "nix_pkg_kpkqksnxdns56661qwszmzl710ybaici",
+    "nix_pkg_9w5r3pwfr5hvvr2lf1i71mz79qy86f7y",
+    "nix_pkg_gcjzri64yz2clwwlkay0wbarjbwq8yvp",
+    "nix_pkg_3lbh75xpd3z1pcnxlrzfyaafgvziizw4",
+)

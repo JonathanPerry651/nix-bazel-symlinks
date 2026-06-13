@@ -1,0 +1,12 @@
+# Bazel symlinks
+/bazel-*
+
+# Compiled binaries
+/nix_extractor
+
+# IDEs
+.idea/
+.vscode/
+
+# OS specific
+.DS_Store
