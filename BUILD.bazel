@@ -1,66 +1,31 @@
 exports_files(["nix_extractor"])
 
-load("//:nix_binary.bzl", "nix_binary")
 load("//:custom_rules.bzl", "nix_hello_gen", "nix_patchelf_inspect", "nix_ripgrep_search")
 
-# 1. GNU Hello Wrapper
-# Links and executes the precompiled hello package via explicit invocation
-# of the glibc dynamic linker and runtime library paths within the sandbox.
-nix_binary(
+# 1. Aliases for the wrapped entrypoint binaries
+alias(
     name = "hello",
-    binary = "@nix_pkg_18mrc8i5l3r5xnxrv091x25nsnwa1xzp//:bin/hello",
-    linker = "@nix_pkg_1bdzriipn18184zpwh2lfdabk2gqcgxn//:lib/ld-linux-aarch64.so.1",
-    lib_files = [
-        "@nix_pkg_7a3zsvzzm9ki2r3w2cl0mx12zjicinkj//:lib/libgcc_s.so.1",
-        "@nix_pkg_f04zlspmsqzyv15kcxbn6mx4wb71a0jm//:lib/libidn2.so.0",
-        "@nix_pkg_xag03kgklavhhq66qnac59pqxpxvjqga//:lib/libunistring.so.5", # libunistring has libunistring.so.5 in glibc-2.42-61 closure!
-    ],
-    additional_libs = [
-        "@nix_store//:18mrc8i5l3r5xnxrv091x25nsnwa1xzp", # Force mounting of hello + dependencies in RBE
-        "@nix_store//:7a3zsvzzm9ki2r3w2cl0mx12zjicinkj", # Force mounting of gcc-lib (transitive gcc-libgcc)
-        "@nix_store//:f04zlspmsqzyv15kcxbn6mx4wb71a0jm", # Force mounting of libidn2
-        "@nix_store//:xag03kgklavhhq66qnac59pqxpxvjqga", # Force mounting of libunistring
-    ],
+    actual = "@nix//:hello",
 )
 
-# 2. Patchelf Wrapper
-nix_binary(
+alias(
     name = "patchelf",
-    binary = "@nix_pkg_4yp2n6439qwqa60hjyx4lx9550ckgvd9//:bin/patchelf",
-    linker = "@nix_pkg_1bdzriipn18184zpwh2lfdabk2gqcgxn//:lib/ld-linux-aarch64.so.1",
-    lib_files = [
-        "@nix_pkg_7a3zsvzzm9ki2r3w2cl0mx12zjicinkj//:lib/libgcc_s.so.1",
-        "@nix_pkg_7a3zsvzzm9ki2r3w2cl0mx12zjicinkj//:lib/libstdc++.so.6",
-    ],
-    additional_libs = [
-        "@nix_store//:4yp2n6439qwqa60hjyx4lx9550ckgvd9", # Force mounting of patchelf + dependencies
-        "@nix_store//:7a3zsvzzm9ki2r3w2cl0mx12zjicinkj", # Force mounting of gcc-lib (transitive gcc-libgcc)
-    ],
+    actual = "@nix//:patchelf",
 )
 
-# 3. Ripgrep Wrapper
-nix_binary(
+alias(
     name = "ripgrep",
-    binary = "@nix_pkg_n2jwjpmx2dg4cznyni372pm9y4a90yhv//:bin/rg",
-    linker = "@nix_pkg_9w5r3pwfr5hvvr2lf1i71mz79qy86f7y//:lib/ld-linux-aarch64.so.1",
-    lib_files = [
-        "@nix_pkg_kpkqksnxdns56661qwszmzl710ybaici//:lib/libpcre2-8.so.0",
-    ],
-    additional_libs = [
-        "@nix_store//:n2jwjpmx2dg4cznyni372pm9y4a90yhv", # Force mounting of ripgrep + dependencies
-        "@nix_store//:kpkqksnxdns56661qwszmzl710ybaici", # Force mounting of pcre2
-        "@nix_store//:9w5r3pwfr5hvvr2lf1i71mz79qy86f7y", # Force mounting of glibc-2.35
-        "@nix_store//:gcjzri64yz2clwwlkay0wbarjbwq8yvp", # Force mounting of libidn2-2.3.2
-        "@nix_store//:3lbh75xpd3z1pcnxlrzfyaafgvziizw4", # Force mounting of libunistring-1.0
-    ],
+    actual = "@nix//:ripgrep",
 )
 
-# 4. Custom rules exercising the Nix infrastructure in build actions
+# 2. Custom rules exercising the Nix infrastructure in build actions
+# hello_tool defaults to //:hello (which resolves via alias to @nix//:hello)
 nix_hello_gen(
     name = "hello_gen_out",
     out = "hello_message.txt",
 )
 
+# rg_tool defaults to //:ripgrep (which resolves via alias to @nix//:ripgrep)
 nix_ripgrep_search(
     name = "ripgrep_search_out",
     src = "//:main.c",
@@ -68,8 +33,9 @@ nix_ripgrep_search(
     out = "rg_matches.txt",
 )
 
+# patchelf_tool defaults to //:patchelf. We use the hash-free raw binary alias from @nix.
 nix_patchelf_inspect(
     name = "patchelf_inspect_out",
-    binary_to_inspect = "@nix_pkg_18mrc8i5l3r5xnxrv091x25nsnwa1xzp//:bin/hello",
+    binary_to_inspect = "@nix//:hello_raw",
     out = "hello_interpreter.txt",
 )

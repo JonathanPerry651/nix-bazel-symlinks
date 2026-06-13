@@ -190,7 +190,7 @@
   "moduleExtensions": {
     "//:nix_extension.bzl%nix_extension": {
       "general": {
-        "bzlTransitiveDigest": "fbn/eQooxuV79+N8rh9AcMv4O+8txhZpaELdJh8T/Nw=",
+        "bzlTransitiveDigest": "4EznPHbcvfWBEOZv5S0OIy03+dhRSiz7Fs2yM2aZ8Xo=",
         "usagesDigest": "Nd+uPXS946mhYMHyb2wJikLnBihRC/nk/AsIq8HvXHY=",
         "recordedInputs": [],
         "generatedRepoSpecs": {
@@ -304,6 +304,10 @@
                 "3lbh75xpd3z1pcnxlrzfyaafgvziizw4": "3lbh75xpd3z1pcnxlrzfyaafgvziizw4-libunistring-1.0"
               }
             }
+          },
+          "nix": {
+            "repoRuleId": "@@//:nix_unification.bzl%nix_unification",
+            "attributes": {}
           }
         }
       }

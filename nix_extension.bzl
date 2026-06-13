@@ -2,6 +2,7 @@
 
 load("//:nix_import.bzl", "nix_import")
 load("//:nix_store.bzl", "nix_store")
+load("//:nix_unification.bzl", "nix_unification")
 
 def _nix_extension_impl(ctx):
     # 1. Declare the 8 Nix repositories dynamically fetched from cache.nixos.org
@@ -101,6 +102,10 @@ def _nix_extension_impl(ctx):
             "gcjzri64yz2clwwlkay0wbarjbwq8yvp": "gcjzri64yz2clwwlkay0wbarjbwq8yvp-libidn2-2.3.2",
             "3lbh75xpd3z1pcnxlrzfyaafgvziizw4": "3lbh75xpd3z1pcnxlrzfyaafgvziizw4-libunistring-1.0",
         },
+    )
+
+    nix_unification(
+        name = "nix",
     )
 
 nix_extension = module_extension(

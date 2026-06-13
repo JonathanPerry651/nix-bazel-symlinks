@@ -40,9 +40,9 @@ echo "=== Diagnosing External Cache Folders ==="
 ls -la $(bazel info output_base)/external/
 
 echo "=== Listing Runfiles Tree for Patchelf ==="
-find bazel-bin/patchelf.runfiles/ -name "*libgcc_s.so*" -exec ls -ld {} \;
-find bazel-bin/patchelf.runfiles/ -name "*nix_store*" -exec ls -ld {} \;
-find bazel-bin/patchelf.runfiles/ -name "*libgcc*" -exec ls -ld {} \;
+find bazel-bin/ -path "*/patchelf.runfiles/*" -name "*libgcc_s.so*" -exec ls -ld {} \;
+find bazel-bin/ -path "*/patchelf.runfiles/*" -name "*nix_store*" -exec ls -ld {} \;
+find bazel-bin/ -path "*/patchelf.runfiles/*" -name "*libgcc*" -exec ls -ld {} \;
 
 echo "=== Running Patchelf Nix Package ==="
 bazel run //:patchelf -- --version
