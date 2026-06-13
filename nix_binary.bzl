@@ -137,8 +137,8 @@ nix_binary = rule(
     attrs = {
         "binary": attr.label(mandatory = True, allow_single_file = True),
         "linker": attr.label(mandatory = True, allow_single_file = True),
-        "lib_files": attr.label_list(mandatory = True),
-        "additional_libs": attr.label_list(default = []),
+        "lib_files": attr.label_list(mandatory = True, allow_files = True),
+        "additional_libs": attr.label_list(default = [], allow_files = True),
         "_runfiles_lib": attr.label(
             default = Label("@bazel_tools//tools/bash/runfiles"),
         ),

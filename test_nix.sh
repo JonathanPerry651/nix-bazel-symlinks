@@ -6,8 +6,9 @@ uname -a
 echo "Architecture: $(uname -m)"
 
 echo "=== Installing Prerequisites ==="
-apt-get update -y
+apt-get -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false update -y
 apt-get install -y curl g++ git python3 xz-utils
+
 
 echo "=== Installing Bazelisk ==="
 ARCH=$(uname -m)

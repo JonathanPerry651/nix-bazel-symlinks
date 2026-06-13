@@ -10,3 +10,7 @@
 
 # OS specific
 .DS_Store
+
+# Bootstrapped Nix-Portable
+/nix-portable
+

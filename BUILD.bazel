@@ -1,5 +1,6 @@
 exports_files(["nix_extractor"])
 
+load("@rules_shell//shell:sh_binary.bzl", "sh_binary")
 load("//:custom_rules.bzl", "nix_hello_gen", "nix_patchelf_inspect", "nix_ripgrep_search")
 
 # 1. Aliases for the wrapped entrypoint binaries
@@ -38,4 +39,13 @@ nix_patchelf_inspect(
     name = "patchelf_inspect_out",
     binary_to_inspect = "@nix//:hello_raw",
     out = "hello_interpreter.txt",
+)
+
+sh_binary(
+    name = "nix_update",
+    srcs = ["nix_update.sh"],
+    data = [
+        "nix_deps.json",
+        "nix_update.go",
+    ],
 )

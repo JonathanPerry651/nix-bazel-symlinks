@@ -1,97 +1,81 @@
 # nix_unification.bzl
 
 def _nix_unification_impl(repository_ctx):
+    lock_path = repository_ctx.path(repository_ctx.attr.lock_file)
+    lock_content = repository_ctx.read(lock_path)
+    lock_data = json.decode(lock_content)
+    
     build_content = []
     build_content.append("load(\"@nix_bazel_links//:nix_binary.bzl\", \"nix_binary\")")
     build_content.append("")
     
-    # 1. Hello wrapped binary
-    build_content.append("nix_binary(")
-    build_content.append("    name = \"hello\",")
-    build_content.append("    binary = \"@nix_pkg_18mrc8i5l3r5xnxrv091x25nsnwa1xzp//:bin/hello\",")
-    build_content.append("    linker = \"@nix_pkg_1bdzriipn18184zpwh2lfdabk2gqcgxn//:lib/ld-linux-aarch64.so.1\",")
-    build_content.append("    lib_files = [")
-    build_content.append("        \"@nix_pkg_7a3zsvzzm9ki2r3w2cl0mx12zjicinkj//:lib/libgcc_s.so.1\",")
-    build_content.append("        \"@nix_pkg_f04zlspmsqzyv15kcxbn6mx4wb71a0jm//:lib/libidn2.so.0\",")
-    build_content.append("        \"@nix_pkg_xag03kgklavhhq66qnac59pqxpxvjqga//:lib/libunistring.so.5\",")
-    build_content.append("    ],")
-    build_content.append("    additional_libs = [")
-    build_content.append("        \"@nix_store//:18mrc8i5l3r5xnxrv091x25nsnwa1xzp\",")
-    build_content.append("        \"@nix_store//:7a3zsvzzm9ki2r3w2cl0mx12zjicinkj\",")
-    build_content.append("        \"@nix_store//:f04zlspmsqzyv15kcxbn6mx4wb71a0jm\",")
-    build_content.append("        \"@nix_store//:xag03kgklavhhq66qnac59pqxpxvjqga\",")
-    build_content.append("    ],")
-    build_content.append("    visibility = [\"//visibility:public\"],")
-    build_content.append(")")
-    build_content.append("")
-    
-    # 2. Patchelf wrapped binary
-    build_content.append("nix_binary(")
-    build_content.append("    name = \"patchelf\",")
-    build_content.append("    binary = \"@nix_pkg_4yp2n6439qwqa60hjyx4lx9550ckgvd9//:bin/patchelf\",")
-    build_content.append("    linker = \"@nix_pkg_1bdzriipn18184zpwh2lfdabk2gqcgxn//:lib/ld-linux-aarch64.so.1\",")
-    build_content.append("    lib_files = [")
-    build_content.append("        \"@nix_pkg_7a3zsvzzm9ki2r3w2cl0mx12zjicinkj//:lib/libgcc_s.so.1\",")
-    build_content.append("        \"@nix_pkg_7a3zsvzzm9ki2r3w2cl0mx12zjicinkj//:lib/libstdc++.so.6\",")
-    build_content.append("    ],")
-    build_content.append("    additional_libs = [")
-    build_content.append("        \"@nix_store//:4yp2n6439qwqa60hjyx4lx9550ckgvd9\",")
-    build_content.append("        \"@nix_store//:7a3zsvzzm9ki2r3w2cl0mx12zjicinkj\",")
-    build_content.append("    ],")
-    build_content.append("    visibility = [\"//visibility:public\"],")
-    build_content.append(")")
-    build_content.append("")
-    
-    # 3. Ripgrep wrapped binary
-    build_content.append("nix_binary(")
-    build_content.append("    name = \"ripgrep\",")
-    build_content.append("    binary = \"@nix_pkg_n2jwjpmx2dg4cznyni372pm9y4a90yhv//:bin/rg\",")
-    build_content.append("    linker = \"@nix_pkg_9w5r3pwfr5hvvr2lf1i71mz79qy86f7y//:lib/ld-linux-aarch64.so.1\",")
-    build_content.append("    lib_files = [")
-    build_content.append("        \"@nix_pkg_kpkqksnxdns56661qwszmzl710ybaici//:lib/libpcre2-8.so.0\",")
-    build_content.append("    ],")
-    build_content.append("    additional_libs = [")
-    build_content.append("        \"@nix_store//:n2jwjpmx2dg4cznyni372pm9y4a90yhv\",")
-    build_content.append("        \"@nix_store//:kpkqksnxdns56661qwszmzl710ybaici\",")
-    build_content.append("        \"@nix_store//:9w5r3pwfr5hvvr2lf1i71mz79qy86f7y\",")
-    build_content.append("        \"@nix_store//:gcjzri64yz2clwwlkay0wbarjbwq8yvp\",")
-    build_content.append("        \"@nix_store//:3lbh75xpd3z1pcnxlrzfyaafgvziizw4\",")
-    build_content.append("    ],")
-    build_content.append("    visibility = [\"//visibility:public\"],")
-    build_content.append(")")
-    build_content.append("")
-    
-    # 4. Aliases for raw entrypoint binaries
-    build_content.append("alias(")
-    build_content.append("    name = \"hello_raw\",")
-    build_content.append("    actual = \"@nix_pkg_18mrc8i5l3r5xnxrv091x25nsnwa1xzp//:bin/hello\",")
-    build_content.append("    visibility = [\"//visibility:public\"],")
-    build_content.append(")")
-    build_content.append("")
-    
-    build_content.append("alias(")
-    build_content.append("    name = \"patchelf_raw\",")
-    build_content.append("    actual = \"@nix_pkg_4yp2n6439qwqa60hjyx4lx9550ckgvd9//:bin/patchelf\",")
-    build_content.append("    visibility = [\"//visibility:public\"],")
-    build_content.append(")")
-    build_content.append("")
-    
-    build_content.append("alias(")
-    build_content.append("    name = \"ripgrep_raw\",")
-    build_content.append("    actual = \"@nix_pkg_n2jwjpmx2dg4cznyni372pm9y4a90yhv//:bin/rg\",")
-    build_content.append("    visibility = [\"//visibility:public\"],")
-    build_content.append(")")
-    build_content.append("")
-    
-    build_content.append("alias(")
-    build_content.append("    name = \"glibc_linker\",")
-    build_content.append("    actual = \"@nix_pkg_1bdzriipn18184zpwh2lfdabk2gqcgxn//:lib/ld-linux-aarch64.so.1\",")
-    build_content.append("    visibility = [\"//visibility:public\"],")
-    build_content.append(")")
-    build_content.append("")
-    
+    NIX_BINARY_TEMPLATE = """nix_binary(
+    name = "{name}",
+    binary = "@nix_pkg_{package_hash}//:{binary_path}",
+    linker = "@nix_pkg_{linker_package_hash}//:{linker_path}",
+    lib_files = [
+{lib_files_list}    ],
+    additional_libs = [
+{additional_libs_list}    ],
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "{name}_raw",
+    actual = "@nix_pkg_{package_hash}//:{binary_path}",
+    visibility = ["//visibility:public"],
+)
+"""
+
+    LINKER_ALIAS_TEMPLATE = """alias(
+    name = "glibc_linker",
+    actual = "@nix_pkg_{linker_package_hash}//:{linker_path}",
+    visibility = ["//visibility:public"],
+)
+"""
+
+    # 1. Generate nix_binary targets
+    for name, entrypoint in lock_data["entrypoints"].items():
+        lib_files_lines = []
+        for lib in (entrypoint.get("lib_files") or []):
+            lib_files_lines.append('        "@nix_pkg_{package_hash}//:{file_path}",'.format(
+                package_hash = lib["package_hash"],
+                file_path = lib["file_path"],
+            ))
+        lib_files_list = "\n".join(lib_files_lines)
+        if lib_files_list:
+            lib_files_list += "\n"
+
+        additional_libs_lines = []
+        for lib in (entrypoint.get("additional_libs") or []):
+            additional_libs_lines.append('        "@nix_store//:{store_name}",'.format(store_name = lib))
+        additional_libs_list = "\n".join(additional_libs_lines)
+        if additional_libs_list:
+            additional_libs_list += "\n"
+
+        build_content.append(NIX_BINARY_TEMPLATE.format(
+            name = name,
+            package_hash = entrypoint["package_hash"],
+            binary_path = entrypoint["binary_path"],
+            linker_package_hash = entrypoint["linker_package_hash"],
+            linker_path = entrypoint["linker_path"],
+            lib_files_list = lib_files_list,
+            additional_libs_list = additional_libs_list,
+        ))
+
+    # 2. Expose raw linker alias just in case (using first resolved linker)
+    for name, entrypoint in lock_data["entrypoints"].items():
+        build_content.append(LINKER_ALIAS_TEMPLATE.format(
+            linker_package_hash = entrypoint["linker_package_hash"],
+            linker_path = entrypoint["linker_path"],
+        ))
+        break
+        
     repository_ctx.file("BUILD.bazel", "\n".join(build_content))
 
 nix_unification = repository_rule(
     implementation = _nix_unification_impl,
+    attrs = {
+        "lock_file": attr.label(mandatory = True),
+    },
 )

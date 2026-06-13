@@ -1,0 +1,117 @@
+{
+  "channel": "nix-resolved",
+  "resolved_packages": {
+    "3lbh75xpd3z1pcnxlrzfyaafgvziizw4": {
+      "pkg_name": "libunistring-1.0",
+      "store_name": "3lbh75xpd3z1pcnxlrzfyaafgvziizw4-libunistring-1.0"
+    },
+    "3pz29jpsk65xjhvhnnbzsad0gwkr5frx": {
+      "pkg_name": "hello-2.12.1",
+      "store_name": "3pz29jpsk65xjhvhnnbzsad0gwkr5frx-hello-2.12.1"
+    },
+    "9w5r3pwfr5hvvr2lf1i71mz79qy86f7y": {
+      "pkg_name": "glibc-2.35-224",
+      "store_name": "9w5r3pwfr5hvvr2lf1i71mz79qy86f7y-glibc-2.35-224"
+    },
+    "bhxlipf80sp6gi99sdx2b26k41zfvfas": {
+      "pkg_name": "libidn2-2.3.4",
+      "store_name": "bhxlipf80sp6gi99sdx2b26k41zfvfas-libidn2-2.3.4"
+    },
+    "gcjzri64yz2clwwlkay0wbarjbwq8yvp": {
+      "pkg_name": "libidn2-2.3.2",
+      "store_name": "gcjzri64yz2clwwlkay0wbarjbwq8yvp-libidn2-2.3.2"
+    },
+    "i2imsnxbm1xih8cpj178pa3b1q6w3mj0": {
+      "pkg_name": "glibc-2.38-77",
+      "store_name": "i2imsnxbm1xih8cpj178pa3b1q6w3mj0-glibc-2.38-77"
+    },
+    "kpkqksnxdns56661qwszmzl710ybaici": {
+      "pkg_name": "pcre2-10.40",
+      "store_name": "kpkqksnxdns56661qwszmzl710ybaici-pcre2-10.40"
+    },
+    "m4rjni7crf2vm8yy87bv9ak1ymvig3ms": {
+      "pkg_name": "patchelf-0.15.0",
+      "store_name": "m4rjni7crf2vm8yy87bv9ak1ymvig3ms-patchelf-0.15.0"
+    },
+    "n2jwjpmx2dg4cznyni372pm9y4a90yhv": {
+      "pkg_name": "ripgrep-13.0.0",
+      "store_name": "n2jwjpmx2dg4cznyni372pm9y4a90yhv-ripgrep-13.0.0"
+    },
+    "ry21w5flvjsn294j6br3a2mcqimbnjj6": {
+      "pkg_name": "gcc-12.3.0-libgcc",
+      "store_name": "ry21w5flvjsn294j6br3a2mcqimbnjj6-gcc-12.3.0-libgcc"
+    },
+    "s9myfxbgfgm9hn48qi9nsrf83x99m6s5": {
+      "pkg_name": "libunistring-1.1",
+      "store_name": "s9myfxbgfgm9hn48qi9nsrf83x99m6s5-libunistring-1.1"
+    },
+    "sq990srb0g6z8yd62xdlghg4dswwhx3h": {
+      "pkg_name": "xgcc-12.3.0-libgcc",
+      "store_name": "sq990srb0g6z8yd62xdlghg4dswwhx3h-xgcc-12.3.0-libgcc"
+    },
+    "zg962dnwaw2651lnq73ns0c9j8xay4kc": {
+      "pkg_name": "gcc-12.3.0-lib",
+      "store_name": "zg962dnwaw2651lnq73ns0c9j8xay4kc-gcc-12.3.0-lib"
+    }
+  },
+  "entrypoints": {
+    "hello": {
+      "package_hash": "3pz29jpsk65xjhvhnnbzsad0gwkr5frx",
+      "binary_path": "bin/hello",
+      "linker_package_hash": "i2imsnxbm1xih8cpj178pa3b1q6w3mj0",
+      "linker_path": "lib/ld-linux-aarch64.so.1",
+      "lib_files": null,
+      "additional_libs": [
+        "s9myfxbgfgm9hn48qi9nsrf83x99m6s5",
+        "bhxlipf80sp6gi99sdx2b26k41zfvfas",
+        "sq990srb0g6z8yd62xdlghg4dswwhx3h",
+        "i2imsnxbm1xih8cpj178pa3b1q6w3mj0",
+        "3pz29jpsk65xjhvhnnbzsad0gwkr5frx"
+      ]
+    },
+    "patchelf": {
+      "package_hash": "m4rjni7crf2vm8yy87bv9ak1ymvig3ms",
+      "binary_path": "bin/patchelf",
+      "linker_package_hash": "i2imsnxbm1xih8cpj178pa3b1q6w3mj0",
+      "linker_path": "lib/ld-linux-aarch64.so.1",
+      "lib_files": [
+        {
+          "package_hash": "zg962dnwaw2651lnq73ns0c9j8xay4kc",
+          "file_path": "lib/libstdc++.so.6"
+        },
+        {
+          "package_hash": "zg962dnwaw2651lnq73ns0c9j8xay4kc",
+          "file_path": "lib/libgcc_s.so.1"
+        }
+      ],
+      "additional_libs": [
+        "s9myfxbgfgm9hn48qi9nsrf83x99m6s5",
+        "bhxlipf80sp6gi99sdx2b26k41zfvfas",
+        "sq990srb0g6z8yd62xdlghg4dswwhx3h",
+        "i2imsnxbm1xih8cpj178pa3b1q6w3mj0",
+        "ry21w5flvjsn294j6br3a2mcqimbnjj6",
+        "zg962dnwaw2651lnq73ns0c9j8xay4kc",
+        "m4rjni7crf2vm8yy87bv9ak1ymvig3ms"
+      ]
+    },
+    "ripgrep": {
+      "package_hash": "n2jwjpmx2dg4cznyni372pm9y4a90yhv",
+      "binary_path": "bin/rg",
+      "linker_package_hash": "9w5r3pwfr5hvvr2lf1i71mz79qy86f7y",
+      "linker_path": "lib/ld-linux-aarch64.so.1",
+      "lib_files": [
+        {
+          "package_hash": "kpkqksnxdns56661qwszmzl710ybaici",
+          "file_path": "lib/libpcre2-8.so.0"
+        }
+      ],
+      "additional_libs": [
+        "9w5r3pwfr5hvvr2lf1i71mz79qy86f7y",
+        "kpkqksnxdns56661qwszmzl710ybaici",
+        "n2jwjpmx2dg4cznyni372pm9y4a90yhv",
+        "3lbh75xpd3z1pcnxlrzfyaafgvziizw4",
+        "gcjzri64yz2clwwlkay0wbarjbwq8yvp"
+      ]
+    }
+  }
+}

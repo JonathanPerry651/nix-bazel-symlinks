@@ -4,6 +4,7 @@ module(
 )
 
 bazel_dep(name = "rules_cc", version = "0.0.17")
+bazel_dep(name = "rules_shell", version = "0.3.0")
 
 # Load and use our Nix Bzlmod module extension
 nix_ext = use_extension("//:nix_extension.bzl", "nix_extension")

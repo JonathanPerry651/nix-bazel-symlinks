@@ -1,0 +1,23 @@
+{
+  "sources": {
+    "nixpkgs_latest": "https://github.com/NixOS/nixpkgs/archive/nixos-23.11.tar.gz",
+    "nixpkgs_older": "https://github.com/NixOS/nixpkgs/archive/nixos-22.11.tar.gz"
+  },
+  "entrypoints": {
+    "hello": {
+      "source": "nixpkgs_latest",
+      "attribute": "hello",
+      "binary": "bin/hello"
+    },
+    "patchelf": {
+      "source": "nixpkgs_latest",
+      "attribute": "patchelf",
+      "binary": "bin/patchelf"
+    },
+    "ripgrep": {
+      "source": "nixpkgs_older",
+      "attribute": "ripgrep",
+      "binary": "bin/rg"
+    }
+  }
+}

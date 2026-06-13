@@ -190,85 +190,38 @@
   "moduleExtensions": {
     "//:nix_extension.bzl%nix_extension": {
       "general": {
-        "bzlTransitiveDigest": "4EznPHbcvfWBEOZv5S0OIy03+dhRSiz7Fs2yM2aZ8Xo=",
+        "bzlTransitiveDigest": "mWrbOPt2eUtf4M+jqc4t85S6T2/kYysOlqFrV4Gqatg=",
         "usagesDigest": "Nd+uPXS946mhYMHyb2wJikLnBihRC/nk/AsIq8HvXHY=",
-        "recordedInputs": [],
+        "recordedInputs": [
+          "FILE:@@//nix_lock.json daae8070178ceb0de2f2afc87cfaa9cb58de490a7f890f56687d65774ee2516c"
+        ],
         "generatedRepoSpecs": {
-          "nix_pkg_18mrc8i5l3r5xnxrv091x25nsnwa1xzp": {
+          "nix_pkg_3lbh75xpd3z1pcnxlrzfyaafgvziizw4": {
             "repoRuleId": "@@//:nix_import.bzl%nix_import",
             "attributes": {
-              "hash": "18mrc8i5l3r5xnxrv091x25nsnwa1xzp",
-              "pkg_name": "hello"
+              "hash": "3lbh75xpd3z1pcnxlrzfyaafgvziizw4",
+              "pkg_name": "libunistring-1.0"
             }
           },
-          "nix_pkg_4yp2n6439qwqa60hjyx4lx9550ckgvd9": {
+          "nix_pkg_3pz29jpsk65xjhvhnnbzsad0gwkr5frx": {
             "repoRuleId": "@@//:nix_import.bzl%nix_import",
             "attributes": {
-              "hash": "4yp2n6439qwqa60hjyx4lx9550ckgvd9",
-              "pkg_name": "patchelf"
-            }
-          },
-          "nix_pkg_1bdzriipn18184zpwh2lfdabk2gqcgxn": {
-            "repoRuleId": "@@//:nix_import.bzl%nix_import",
-            "attributes": {
-              "hash": "1bdzriipn18184zpwh2lfdabk2gqcgxn",
-              "pkg_name": "glibc"
-            }
-          },
-          "nix_pkg_7a3zsvzzm9ki2r3w2cl0mx12zjicinkj": {
-            "repoRuleId": "@@//:nix_import.bzl%nix_import",
-            "attributes": {
-              "hash": "7a3zsvzzm9ki2r3w2cl0mx12zjicinkj",
-              "pkg_name": "gcc-lib"
-            }
-          },
-          "nix_pkg_l5ypyhyv1df633ldrdj8fyhnxaqqw6s7": {
-            "repoRuleId": "@@//:nix_import.bzl%nix_import",
-            "attributes": {
-              "hash": "l5ypyhyv1df633ldrdj8fyhnxaqqw6s7",
-              "pkg_name": "gcc-libgcc"
-            }
-          },
-          "nix_pkg_f04zlspmsqzyv15kcxbn6mx4wb71a0jm": {
-            "repoRuleId": "@@//:nix_import.bzl%nix_import",
-            "attributes": {
-              "hash": "f04zlspmsqzyv15kcxbn6mx4wb71a0jm",
-              "pkg_name": "libidn2"
-            }
-          },
-          "nix_pkg_xag03kgklavhhq66qnac59pqxpxvjqga": {
-            "repoRuleId": "@@//:nix_import.bzl%nix_import",
-            "attributes": {
-              "hash": "xag03kgklavhhq66qnac59pqxpxvjqga",
-              "pkg_name": "libunistring"
-            }
-          },
-          "nix_pkg_xzs7w65n77a94hmpwkfsnwqkj2k5akn4": {
-            "repoRuleId": "@@//:nix_import.bzl%nix_import",
-            "attributes": {
-              "hash": "xzs7w65n77a94hmpwkfsnwqkj2k5akn4",
-              "pkg_name": "xgcc-libgcc"
-            }
-          },
-          "nix_pkg_n2jwjpmx2dg4cznyni372pm9y4a90yhv": {
-            "repoRuleId": "@@//:nix_import.bzl%nix_import",
-            "attributes": {
-              "hash": "n2jwjpmx2dg4cznyni372pm9y4a90yhv",
-              "pkg_name": "ripgrep"
-            }
-          },
-          "nix_pkg_kpkqksnxdns56661qwszmzl710ybaici": {
-            "repoRuleId": "@@//:nix_import.bzl%nix_import",
-            "attributes": {
-              "hash": "kpkqksnxdns56661qwszmzl710ybaici",
-              "pkg_name": "pcre2"
+              "hash": "3pz29jpsk65xjhvhnnbzsad0gwkr5frx",
+              "pkg_name": "hello-2.12.1"
             }
           },
           "nix_pkg_9w5r3pwfr5hvvr2lf1i71mz79qy86f7y": {
             "repoRuleId": "@@//:nix_import.bzl%nix_import",
             "attributes": {
               "hash": "9w5r3pwfr5hvvr2lf1i71mz79qy86f7y",
-              "pkg_name": "glibc-2.35"
+              "pkg_name": "glibc-2.35-224"
+            }
+          },
+          "nix_pkg_bhxlipf80sp6gi99sdx2b26k41zfvfas": {
+            "repoRuleId": "@@//:nix_import.bzl%nix_import",
+            "attributes": {
+              "hash": "bhxlipf80sp6gi99sdx2b26k41zfvfas",
+              "pkg_name": "libidn2-2.3.4"
             }
           },
           "nix_pkg_gcjzri64yz2clwwlkay0wbarjbwq8yvp": {
@@ -278,36 +231,87 @@
               "pkg_name": "libidn2-2.3.2"
             }
           },
-          "nix_pkg_3lbh75xpd3z1pcnxlrzfyaafgvziizw4": {
+          "nix_pkg_i2imsnxbm1xih8cpj178pa3b1q6w3mj0": {
             "repoRuleId": "@@//:nix_import.bzl%nix_import",
             "attributes": {
-              "hash": "3lbh75xpd3z1pcnxlrzfyaafgvziizw4",
-              "pkg_name": "libunistring-1.0"
+              "hash": "i2imsnxbm1xih8cpj178pa3b1q6w3mj0",
+              "pkg_name": "glibc-2.38-77"
+            }
+          },
+          "nix_pkg_kpkqksnxdns56661qwszmzl710ybaici": {
+            "repoRuleId": "@@//:nix_import.bzl%nix_import",
+            "attributes": {
+              "hash": "kpkqksnxdns56661qwszmzl710ybaici",
+              "pkg_name": "pcre2-10.40"
+            }
+          },
+          "nix_pkg_m4rjni7crf2vm8yy87bv9ak1ymvig3ms": {
+            "repoRuleId": "@@//:nix_import.bzl%nix_import",
+            "attributes": {
+              "hash": "m4rjni7crf2vm8yy87bv9ak1ymvig3ms",
+              "pkg_name": "patchelf-0.15.0"
+            }
+          },
+          "nix_pkg_n2jwjpmx2dg4cznyni372pm9y4a90yhv": {
+            "repoRuleId": "@@//:nix_import.bzl%nix_import",
+            "attributes": {
+              "hash": "n2jwjpmx2dg4cznyni372pm9y4a90yhv",
+              "pkg_name": "ripgrep-13.0.0"
+            }
+          },
+          "nix_pkg_ry21w5flvjsn294j6br3a2mcqimbnjj6": {
+            "repoRuleId": "@@//:nix_import.bzl%nix_import",
+            "attributes": {
+              "hash": "ry21w5flvjsn294j6br3a2mcqimbnjj6",
+              "pkg_name": "gcc-12.3.0-libgcc"
+            }
+          },
+          "nix_pkg_s9myfxbgfgm9hn48qi9nsrf83x99m6s5": {
+            "repoRuleId": "@@//:nix_import.bzl%nix_import",
+            "attributes": {
+              "hash": "s9myfxbgfgm9hn48qi9nsrf83x99m6s5",
+              "pkg_name": "libunistring-1.1"
+            }
+          },
+          "nix_pkg_sq990srb0g6z8yd62xdlghg4dswwhx3h": {
+            "repoRuleId": "@@//:nix_import.bzl%nix_import",
+            "attributes": {
+              "hash": "sq990srb0g6z8yd62xdlghg4dswwhx3h",
+              "pkg_name": "xgcc-12.3.0-libgcc"
+            }
+          },
+          "nix_pkg_zg962dnwaw2651lnq73ns0c9j8xay4kc": {
+            "repoRuleId": "@@//:nix_import.bzl%nix_import",
+            "attributes": {
+              "hash": "zg962dnwaw2651lnq73ns0c9j8xay4kc",
+              "pkg_name": "gcc-12.3.0-lib"
             }
           },
           "nix_store": {
             "repoRuleId": "@@//:nix_store.bzl%nix_store",
             "attributes": {
               "packages": {
-                "18mrc8i5l3r5xnxrv091x25nsnwa1xzp": "18mrc8i5l3r5xnxrv091x25nsnwa1xzp-hello-2.12.3",
-                "4yp2n6439qwqa60hjyx4lx9550ckgvd9": "4yp2n6439qwqa60hjyx4lx9550ckgvd9-patchelf-0.15.2",
-                "1bdzriipn18184zpwh2lfdabk2gqcgxn": "1bdzriipn18184zpwh2lfdabk2gqcgxn-glibc-2.42-61",
-                "7a3zsvzzm9ki2r3w2cl0mx12zjicinkj": "7a3zsvzzm9ki2r3w2cl0mx12zjicinkj-gcc-15.2.0-lib",
-                "l5ypyhyv1df633ldrdj8fyhnxaqqw6s7": "l5ypyhyv1df633ldrdj8fyhnxaqqw6s7-gcc-15.2.0-libgcc",
-                "f04zlspmsqzyv15kcxbn6mx4wb71a0jm": "f04zlspmsqzyv15kcxbn6mx4wb71a0jm-libidn2-2.3.8",
-                "xag03kgklavhhq66qnac59pqxpxvjqga": "xag03kgklavhhq66qnac59pqxpxvjqga-libunistring-1.4.2",
-                "xzs7w65n77a94hmpwkfsnwqkj2k5akn4": "xzs7w65n77a94hmpwkfsnwqkj2k5akn4-xgcc-15.2.0-libgcc",
-                "n2jwjpmx2dg4cznyni372pm9y4a90yhv": "n2jwjpmx2dg4cznyni372pm9y4a90yhv-ripgrep-13.0.0",
-                "kpkqksnxdns56661qwszmzl710ybaici": "kpkqksnxdns56661qwszmzl710ybaici-pcre2-10.40",
+                "3lbh75xpd3z1pcnxlrzfyaafgvziizw4": "3lbh75xpd3z1pcnxlrzfyaafgvziizw4-libunistring-1.0",
+                "3pz29jpsk65xjhvhnnbzsad0gwkr5frx": "3pz29jpsk65xjhvhnnbzsad0gwkr5frx-hello-2.12.1",
                 "9w5r3pwfr5hvvr2lf1i71mz79qy86f7y": "9w5r3pwfr5hvvr2lf1i71mz79qy86f7y-glibc-2.35-224",
+                "bhxlipf80sp6gi99sdx2b26k41zfvfas": "bhxlipf80sp6gi99sdx2b26k41zfvfas-libidn2-2.3.4",
                 "gcjzri64yz2clwwlkay0wbarjbwq8yvp": "gcjzri64yz2clwwlkay0wbarjbwq8yvp-libidn2-2.3.2",
-                "3lbh75xpd3z1pcnxlrzfyaafgvziizw4": "3lbh75xpd3z1pcnxlrzfyaafgvziizw4-libunistring-1.0"
+                "i2imsnxbm1xih8cpj178pa3b1q6w3mj0": "i2imsnxbm1xih8cpj178pa3b1q6w3mj0-glibc-2.38-77",
+                "kpkqksnxdns56661qwszmzl710ybaici": "kpkqksnxdns56661qwszmzl710ybaici-pcre2-10.40",
+                "m4rjni7crf2vm8yy87bv9ak1ymvig3ms": "m4rjni7crf2vm8yy87bv9ak1ymvig3ms-patchelf-0.15.0",
+                "n2jwjpmx2dg4cznyni372pm9y4a90yhv": "n2jwjpmx2dg4cznyni372pm9y4a90yhv-ripgrep-13.0.0",
+                "ry21w5flvjsn294j6br3a2mcqimbnjj6": "ry21w5flvjsn294j6br3a2mcqimbnjj6-gcc-12.3.0-libgcc",
+                "s9myfxbgfgm9hn48qi9nsrf83x99m6s5": "s9myfxbgfgm9hn48qi9nsrf83x99m6s5-libunistring-1.1",
+                "sq990srb0g6z8yd62xdlghg4dswwhx3h": "sq990srb0g6z8yd62xdlghg4dswwhx3h-xgcc-12.3.0-libgcc",
+                "zg962dnwaw2651lnq73ns0c9j8xay4kc": "zg962dnwaw2651lnq73ns0c9j8xay4kc-gcc-12.3.0-lib"
               }
             }
           },
           "nix": {
             "repoRuleId": "@@//:nix_unification.bzl%nix_unification",
-            "attributes": {}
+            "attributes": {
+              "lock_file": "@@//:nix_lock.json"
+            }
           }
         }
       }
