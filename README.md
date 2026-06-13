@@ -45,6 +45,12 @@ To prevent dynamic linker mismatches or host-dependency leaks:
 - The [nix_binary.bzl](file:///Users/jonathanperry/.gemini/antigravity/scratch/nix-bazel-symlinks/nix_binary.bzl) wrapper discovers the local Bazel `.runfiles` directory robustly.
 - It executes the binary directly through its own, package-specific dynamic linker (`ld-linux`) using `--library-path` pointed exclusively to its specific transitive dependency closure.
 
+### 5. API Unification (@nix)
+To shield users from knowing cryptographic hashes of Nix packages, a unification repository [nix_unification.bzl](file:///Users/jonathanperry/.gemini/antigravity/scratch/nix-bazel-symlinks/nix_unification.bzl) is generated. 
+- It houses all the `nix_binary` rule declarations.
+- It exports clean aliases (e.g. `@nix//:hello_raw`, `@nix//:glibc_linker`) for use in custom build rules.
+- This reduces the user's `MODULE.bazel` to only need to import `nix` and `nix_store`, hiding individual package hashes.
+
 ```mermaid
 graph LR
     subgraph "GLIBC 2.42 Environment"
@@ -68,6 +74,7 @@ graph LR
 - [nix_extension.bzl](file:///Users/jonathanperry/.gemini/antigravity/scratch/nix-bazel-symlinks/nix_extension.bzl): Bzlmod module extension registering the Nix packages and the `@nix_store` forest.
 - [nix_import.bzl](file:///Users/jonathanperry/.gemini/antigravity/scratch/nix-bazel-symlinks/nix_import.bzl): Repository rule to download, unpack, and map symlinks for a single package.
 - [nix_store.bzl](file:///Users/jonathanperry/.gemini/antigravity/scratch/nix-bazel-symlinks/nix_store.bzl): Combines packages into a single symlink forest.
+- [nix_unification.bzl](file:///Users/jonathanperry/.gemini/antigravity/scratch/nix-bazel-symlinks/nix_unification.bzl): Repository rule to expose unified, hash-free entrypoints and raw aliases.
 - [nix_binary.bzl](file:///Users/jonathanperry/.gemini/antigravity/scratch/nix-bazel-symlinks/nix_binary.bzl): Wrapper script rule to safely resolve paths and launch binaries via the correct `ld-linux`.
 - [nix_extractor.go](file:///Users/jonathanperry/.gemini/antigravity/scratch/nix-bazel-symlinks/nix_extractor.go): A standalone Go program that downloads NARs and outputs file structures and metadata.
 - [custom_rules.bzl](file:///Users/jonathanperry/.gemini/antigravity/scratch/nix-bazel-symlinks/custom_rules.bzl): Custom Starlark rules that invoke the Nix-built binaries as part of sandboxed build actions.
